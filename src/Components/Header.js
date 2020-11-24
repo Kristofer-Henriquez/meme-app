@@ -1,8 +1,8 @@
 import React from "react";
 
-// class Header {
+
 function Header() {
-  return <p>Hii</p>;
+  return <h1>Hii from the Header Section: Meme Generator</h1>;
 }
 
 

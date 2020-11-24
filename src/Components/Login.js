@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import axios from 'axios';
+import Form from 'react-bootstrap/Form';
 
 class Login extends Component {
   constructor() {
@@ -50,7 +52,7 @@ class Login extends Component {
           value={this.state.lastName}
           onChange={this.handleOnChange}
         />
-        <label>Emaail</label>
+        <label>Email</label>
         <input
           type="text"
           name="email"

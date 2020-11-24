@@ -1,9 +1,11 @@
-import React from "react";
-
+import React from "react"
 
 function Footer() {
-  return <h1>Hii from the Footer Section</h1>;
+    return (
+        <footer className="component">
+            <p>Footer Section: Copyright [Insert Name Here:]</p>
+        </footer>
+    )
 }
 
-
-export default Footer;
+export default Footer

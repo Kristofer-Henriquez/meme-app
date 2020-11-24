@@ -2,10 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-// import Main from "./Main";
 // import reportWebVitals from "./reportWebVitals";
+import * as serviceWorker from "./serviceWorker";
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 axios.defaults.baseURL =
   process.env.NODE_ENV === "development"
@@ -18,3 +19,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorker.unregister();

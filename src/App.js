@@ -16,6 +16,7 @@ import Dashboard from './Components/Dashboard';
 import Navigation from './Components/Navigation';
 
 import Header from "./Components/Header";
+import MemeGenerator from "./Components/MemeGenerator";
 import Footer from "./Components/Footer";
 
 // import Organizations from './Components/Organizations';
@@ -44,7 +45,6 @@ export default class App extends Component {
       <div className="app">
         <BrowserRouter>
           <Navigation />
-          <Header />
           <Switch>
             <Route exact path="/">
               <Redirect to="/" />
@@ -83,6 +83,8 @@ export default class App extends Component {
             /> */}
           </Switch>
         </BrowserRouter>
+        <Header />
+        <MemeGenerator />
         <Footer />
       </div>
     );

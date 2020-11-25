@@ -22,7 +22,7 @@ class CurrentUser extends Component {
 
   componentDidMount() {
     axios
-      .get('/api/sessions' + localStorage.user_id, 
+      .get('/api/users/1' + localStorage.user_id, 
         {headers: { Authorization: `Bearer ${localStorage.token}` }})
       .then((response) => {
         this.setState({
@@ -62,7 +62,7 @@ class CurrentUser extends Component {
     const { first_name, last_name, email } = this.state;
     axios
       .patch(
-        '/api/users/' + localStorage.user_id,
+        '/api/users/1' + localStorage.user_id,
         {
           first_name: first_name,
           last_name: last_name,
@@ -83,7 +83,7 @@ class CurrentUser extends Component {
         <h1>Welcome to your Dashboard {this.state.first_name}</h1>
         <br />
         <div>
-          <h2>Here are your current Memes: </h2>
+          <h2>Here are your current Account settings: </h2>
           {this.state.organization_users.map((organization_user) => {
             return (
               <div key={organization_user.organization_id}>
@@ -157,10 +157,10 @@ class CurrentUser extends Component {
         </div>
 
         <br />
-        <h3>Add Your Organizations</h3>
+        {/* <h3>Add Your Organizations</h3>
         <OrganizationUser 
           updateOrganizationUsers={this.updateOrganizationUsers} 
-        />
+        /> */}
       </div>
     );
   }

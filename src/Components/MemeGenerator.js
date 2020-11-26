@@ -1,6 +1,6 @@
 // import Axios from "axios"
 import React, {Component} from "react"
-import MyMemes from "./MyMemes"
+// import MyMemes from "./MyMemes"
 
 class MemeGenerator extends Component {
     constructor() {
@@ -10,6 +10,7 @@ class MemeGenerator extends Component {
             bottomText: "",
             randomImg: "http://i.imgflip.com/1bij.jpg",
             allMemeImgs: [],
+
        
         }
         this.handleChange = this.handleChange.bind(this)
@@ -25,7 +26,6 @@ class MemeGenerator extends Component {
             })
     }
 
-    
     handleChange(event) {
         const {name, value} = event.target
         this.setState({ [name]: value })
@@ -36,6 +36,11 @@ class MemeGenerator extends Component {
         const randNum = Math.floor(Math.random() * this.state.allMemeImgs.length)
         const randMemeImg = this.state.allMemeImgs[randNum].url
         this.setState({ randomImg: randMemeImg })
+    }
+
+    handleSave(event) {
+        const {name, value} = event.target
+        this.setState({ [name]: value })
     }
     
     render() {
@@ -70,7 +75,7 @@ class MemeGenerator extends Component {
                     <hr></hr>
 
                     {/* View Completed Memes */}
-                    <MyMemes />
+                    {/* <MyMemes /> */}
                     
                     
                     <hr></hr>

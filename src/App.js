@@ -3,6 +3,7 @@ import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import React from 'react';
 import React, { Component } from 'react';
+// import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 // import ReactDOM from "react-dom";
 // import { Router, Route, Link, browserHistory, IndexRoute } from "react-router";
@@ -16,7 +17,8 @@ import Dashboard from './Components/Dashboard';
 import Navigation from './Components/Navigation';
 
 import Header from "./Components/Header";
-import MemeGenerator from "./Components/MemeGenerator";
+// import MemeGenerator from "./Components/MemeGenerator";
+import MemeCreate from "./Components/MemeCreate";
 import Footer from "./Components/Footer";
 
 // import Organizations from './Components/Organizations';
@@ -26,19 +28,23 @@ import Footer from "./Components/Footer";
 // class App extends Component {
 //    render() {
 
-export default class App extends Component {
-  // constructor() {
-    // console.log(ReportsShow);
-    // super();
 
-    // this.state = {
-    //   user: {},
-    // };
+
+// Roughcut V2v
+export default class App extends Component {
+  constructor( props ) {
+  //   console.log(ReportsShow);
+    super( props );
+
+    this.state = {show : false};
+    this.showHide = this.showHide.bind(this)
+  //     user: {},
+  //   };
 
   // }
-
-  componentDidMount() {
   }
+
+
 
   render() {
     return (
@@ -52,44 +58,34 @@ export default class App extends Component {
             <Route path={'/signup'} component={Signup} />
             <Route path={'/login'} component={Login} />
             <Route path={'/dashboard'} component={Dashboard}/>
-            {/* <Route exact path={'/grants'} component={Grants} /> */}
-            {/* <Route path={'/grants/:id'} component={GrantsShow} /> */}
-            {/* <Route path={'/grants-finalize/:id'} component={GrantsFinalizeShow} /> */}
-            {/* <Route path={'/grants-new'} component={GrantsNew} /> */}
-            {/* <Route path={'/sections-new'} component={SectionsNew} /> */}
-            
-            {/* <Route path={'/reports/:id'} component={ReportsShow}/> */}
-            {/* <Route path={'/reports-finalize/:id'} component={ReportsFinalizeShow}/> */}
-              
-            {/* <Route path={'/reports-new'} component={ReportsNew} /> */}
-            {/* <Route exact path={'/categories'} component={Categories} /> */}
-            {/* <Route exact path={'/organizations'} component={Organizations} /> */}
-            {/* <Route exact path={'/funding_orgs'} component={FundingOrgs} /> */}
-            {/* <Route exact path={'/bios'} component={Bios} /> */}
-            {/* <Route path={'/bios/:id'} component={BiosShow} /> */}
-            {/* <Route exact path={'/boilerplates'} component={Boilerplates} /> */}
-            {/* <Route path={'/boilerplates/:id'} component={BoilerplatesShow} /> */}
-            {/* <Route path={'/categories/:id'} component={CategoriesShow} /> */}
-            {/* <Route path={'/funding_orgs/:id'} component={FundingOrgsShow} /> */}
-            {/* <Route path={'/organizations/:id'} component={OrganizationsShow} /> */}
-
-            {/* <Route path={'/bios-new'} component={BiosNew} />
-            <Route path={'/boilerplates-new'} component={BoilerplatesNew} />
-            <Route path={'/categories-new'} component={CategoriesNew} />
-            <Route path={'/funding_orgs-new'} component={FundingOrgsNew} /> */}
-            {/* <Route path={'/organizations-new'} component={OrganizationsNew} /> */}
-            {/* <Route
-              exact path={"/logout"} component={Logout}
-            /> */}
           </Switch>
         </BrowserRouter>
         <Header />
-        <MemeGenerator />
+        <button style={{color: 'black', backgroundColor: 'lightgrey', marginTop: 10, padding: 10, borderColor: 'black'}} onClick={this.showHide}
+        className="button-primary btn"
+        >{this.changeName()}
+        </button>
+        { this.state.show && 
+          <div>
+            <MemeCreate /> 
+          </div>
+        }
+         
         <Footer />
       </div>
     );
   }
+  changeName(){
+    let text = "Pick a template "
+    text += this.state.show === true ? "hide" : "show";
+    return text;
 }
+  showHide(){
+    const { show } = this.state;
+    this.setState( { show : !show})
+  }
+}
+// Roughcut V2^
   
 
 

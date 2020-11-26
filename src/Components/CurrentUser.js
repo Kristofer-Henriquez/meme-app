@@ -12,8 +12,9 @@ class CurrentUser extends Component {
       first_name: '',
       last_name: '',
       email: '',
-      isHidden: true,
-      organization_users: []
+      // isHidden: true,
+      current_user: {}
+  
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -29,7 +30,7 @@ class CurrentUser extends Component {
           first_name: response.data.first_name,
           last_name: response.data.last_name,
           email: response.data.email,
-          // organization_users: response.data.organization_users
+          current_user: response.data.current_user
         });
       })
       .catch(function (error) {
@@ -82,16 +83,7 @@ class CurrentUser extends Component {
       <div>
         <h1>Welcome to your Dashboard {this.state.first_name}</h1>
         <br />
-        <div>
-          <h2>Here are your current Account settings: </h2>
-          {this.state.organization_users.map((organization_user) => {
-            return (
-              <div key={organization_user.organization_id}>
-                <h4>{organization_user.organization_name}</h4>
-              </div>
-            );
-          })}
-        </div>
+        
         <div>
           {this.state.isHidden ? 
             <Button onClick={this.toggleHidden.bind(this)}>
@@ -103,6 +95,7 @@ class CurrentUser extends Component {
               Close
             </Button>
           }
+          
           <br />
           <br />
           {!this.state.isHidden ? (
@@ -153,7 +146,8 @@ class CurrentUser extends Component {
               </button> */}
             </div>
             
-          ) : null}
+          )
+          : null}
         </div>
 
         <br />

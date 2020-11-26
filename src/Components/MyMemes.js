@@ -18,7 +18,7 @@ export default class MyMemes extends React.Component {
     return (
       <ul>
         { this.state.mymemes.map(mymeme => <li>
-          User_ID: {mymeme.user_id}, id: {mymeme.id}, toptext: {mymeme.toptext}, bottomtext: {mymeme.bottomtext}, image: {mymeme.image_url}
+          User_ID: {mymeme.user_id}, Email: {mymeme.email}, id: {mymeme.id}, toptext: {mymeme.toptext}, bottomtext: {mymeme.bottomtext}, image: {mymeme.image_url}
         </li>)}
       </ul>
     )

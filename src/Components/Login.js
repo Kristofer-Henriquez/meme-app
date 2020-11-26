@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from "react"
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 
@@ -44,6 +44,7 @@ class Login extends Component {
           localStorage.setItem('token', response.data.jwt);
           localStorage.setItem('user_id', response.data.user_id);
           this.props.history.push('/dashboard');
+          // this.props.history.push('/meme')
         }
       })
       .catch((error) => {

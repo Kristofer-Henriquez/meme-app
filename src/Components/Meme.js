@@ -18,7 +18,7 @@ export const Meme = ({ template, onClick }) => {
     <div className="component">
     
       <img
-        style={{ width: 200 }}
+        style={{ width: 500 }}
         key={template.id}
         src={template.url}
         alt={template.name}

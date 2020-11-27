@@ -11,7 +11,9 @@ class CurrentUser extends Component {
     this.state = {
       first_name: '',
       last_name: '',
+      username: '',
       email: '',
+      // user_id: '',
       // isHidden: true,
       current_user: {}
   
@@ -27,9 +29,11 @@ class CurrentUser extends Component {
         {headers: { Authorization: `Bearer ${localStorage.token}` }})
       .then((response) => {
         this.setState({
+          id: response.data.id,
           first_name: response.data.first_name,
           last_name: response.data.last_name,
           email: response.data.email,
+          username: response.data.username,
           current_user: response.data.current_user
         });
       })
@@ -38,13 +42,13 @@ class CurrentUser extends Component {
       });
   }
 
-  updateOrganizationUsers = (newOrganizationUser) => {
-		const organization_users = this.state.organization_users;
-		organization_users.push(newOrganizationUser);
-		this.setState({
-			organization_users: organization_users
-		});
-	};
+  // updateOrganizationUsers = (newOrganizationUser) => {
+	// 	const organization_users = this.state.organization_users;
+	// 	organization_users.push(newOrganizationUser);
+	// 	this.setState({
+	// 		organization_users: organization_users
+	// 	});
+	// };
 
   toggleHidden() {
     this.setState({
@@ -60,11 +64,13 @@ class CurrentUser extends Component {
   }
 
   handleSubmit(event) {
-    const { first_name, last_name, email } = this.state;
+    const { first_name, last_name, email, username, id } = this.state;
     axios
       .patch(
         '/api/users/1' + localStorage.user_id,
         {
+          id: id,
+          username: username,
           first_name: first_name,
           last_name: last_name,
           email: email
@@ -81,24 +87,29 @@ class CurrentUser extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome to your Dashboard {this.state.first_name}</h1>
+        <h1>Welcome to your Dashboard, {this.state.first_name}!</h1>
+        <h1>Account Info:</h1>
         <br />
+        <h1>Name: {this.state.first_name} {this.state.last_name}</h1>
+        <h1>Username: {this.state.username}</h1>
+        <h1>Email: {this.state.email}</h1>
+        <h1>User ID:{this.state.id}</h1>
         
         <div>
           {this.state.isHidden ? 
             <Button onClick={this.toggleHidden.bind(this)}>
-              Update Account Info
+              Close
             </Button> :
             <Button
               onClick={this.toggleHidden.bind(this)}
             >
-              Close
+              Edit Account Info
             </Button>
           }
           
           <br />
           <br />
-          {!this.state.isHidden ? (
+          {this.state.isHidden ? (
             <div>
               <Form onSubmit={this.handleSubmit}>
                 <Form.Group>

@@ -2,8 +2,14 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 // import React from 'react';
+<<<<<<< HEAD
 import React, { Component } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+=======
+import React, { Component } from 'react';
+// import React, { useState, useEffect } from "react";
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+>>>>>>> cf3e9da512f807a461b5ee8c891a4857ee6999e5
 // import ReactDOM from "react-dom";
 // import { Router, Route, Link, browserHistory, IndexRoute } from "react-router";
 // import Home from "./Home";
@@ -16,7 +22,13 @@ import Dashboard from "./Components/Dashboard";
 import Navigation from "./Components/Navigation";
 
 import Header from "./Components/Header";
+<<<<<<< HEAD
 // import Footer from "./Components/Footer";
+=======
+// import MemeGenerator from "./Components/MemeGenerator";
+import MemeCreate from "./Components/MemeCreate";
+import Footer from "./Components/Footer";
+>>>>>>> cf3e9da512f807a461b5ee8c891a4857ee6999e5
 
 // import Organizations from './Components/Organizations';
 import MemesShow from "./Components/MemesShow";
@@ -25,7 +37,11 @@ import MemesNew from "./Components/MemesNew";
 // class App extends Component {
 //    render() {
 
+
+
+// Roughcut V2v
 export default class App extends Component {
+<<<<<<< HEAD
   // constructor() {
   // console.log(ReportsShow);
   // super();
@@ -37,17 +53,32 @@ export default class App extends Component {
   // }
 
   componentDidMount() {}
+=======
+  constructor( props ) {
+  //   console.log(ReportsShow);
+    super( props );
+
+    this.state = {show : false};
+    this.showHide = this.showHide.bind(this)
+  //     user: {},
+  //   };
+
+  // }
+  }
+>>>>>>> cf3e9da512f807a461b5ee8c891a4857ee6999e5
+
+
 
   render() {
     return (
       <div className="app">
         <BrowserRouter>
           <Navigation />
-          <Header />
           <Switch>
             <Route exact path="/">
               <Redirect to="/" />
             </Route>
+<<<<<<< HEAD
             <Route path={"/signup"} component={Signup} />
             <Route path={"/login"} component={Login} />
             <Route path={"/dashboard"} component={Dashboard} />
@@ -64,10 +95,44 @@ export default class App extends Component {
           </Switch>
         </BrowserRouter>
         {/* <Footer /> */}
+=======
+            <Route path={'/signup'} component={Signup} />
+            <Route path={'/login'} component={Login} />
+            <Route path={'/dashboard'} component={Dashboard}/>
+          </Switch>
+        </BrowserRouter>
+        <Header />
+        <button style={{color: 'black', backgroundColor: 'lightgrey', marginTop: 10, padding: 10, borderColor: 'black'}} onClick={this.showHide}
+        className="button-primary btn"
+        >{this.changeName()}
+        </button>
+        { this.state.show && 
+          <div>
+            <MemeCreate /> 
+          </div>
+        }
+         
+        <Footer />
+>>>>>>> cf3e9da512f807a461b5ee8c891a4857ee6999e5
       </div>
     );
   }
+  changeName(){
+    let text = "Pick a template "
+    text += this.state.show === true ? "hide" : "show";
+    return text;
 }
+  showHide(){
+    const { show } = this.state;
+    this.setState( { show : !show})
+  }
+}
+<<<<<<< HEAD
+=======
+// Roughcut V2^
+  
+
+>>>>>>> cf3e9da512f807a461b5ee8c891a4857ee6999e5
 
 // function App() {
 //   return (

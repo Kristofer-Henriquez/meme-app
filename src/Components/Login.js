@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Form from 'react-bootstrap/Form';
+import React, { Component } from "react";
+import axios from "axios";
+import Form from "react-bootstrap/Form";
 
 class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      email: '',
-      password: '',
-      errorMessage: '',
+      email: "",
+      password: "",
+      errorMessage: "",
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -31,7 +31,7 @@ class Login extends Component {
 
     axios
       .post(
-        '/api/sessions',
+        "/api/sessions",
         {
           email: email,
           password: password,
@@ -41,9 +41,10 @@ class Login extends Component {
 
       .then((response) => {
         if (response.data.jwt) {
-          localStorage.setItem('token', response.data.jwt);
-          localStorage.setItem('user_id', response.data.user_id);
-          this.props.history.push('/dashboard');
+          localStorage.setItem("token", response.data.jwt);
+          localStorage.setItem("user_id", response.data.user_id);
+          this.props.history.push("/dashboard");
+          // this.props.history.push('/meme')
         }
       })
       .catch((error) => {
@@ -57,7 +58,7 @@ class Login extends Component {
   }
 
   render() {
-    return (   
+    return (
       <div className="component">
         <Form onSubmit={this.handleSubmit}>
           <Form.Group controlId="formBasicEmail">
@@ -81,12 +82,10 @@ class Login extends Component {
             />
           </Form.Group>
           <div>
-            <span style={{ color: 'red' }}>{this.state.errorMessage}</span>
+            <span style={{ color: "red" }}>{this.state.errorMessage}</span>
           </div>
           <div>
-            <button type="submit">
-              Login
-            </button>
+            <button type="submit">Login</button>
           </div>
         </Form>
       </div>

@@ -24,13 +24,26 @@ class Navigation extends Component {
           {localStorage.token && localStorage.user_id ? (
             <div>
               <li className="active">
-                <Link to="/dashboard">Dashboard</Link>
+                <Link to="/dashboard">My Account</Link>
               </li>
-
               <li className="active">
-                <Link to="/memes">Memes</Link>
+                <Link to="/completed">Completed Memes</Link>
               </li>
-
+              {/* <li className="active">
+                  <Link to="/bios">Page3</Link>
+                </li>
+                <li className="active">
+                  <Link to="/boilerplates">Page4</Link>
+                </li>
+                <li className="active">
+                  <Link to="/categories">Page5</Link>
+                </li>
+                <li className="active">
+                  <Link to="/organizations">Page6</Link>
+                </li>
+                <li className="active">
+                  <Link to="/funding_orgs">Page7</Link>
+                </li> */}
               <li>
                 <Link onClick={this.handleLogoutClick} to="/logout">
                   Logout

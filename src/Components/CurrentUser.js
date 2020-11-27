@@ -73,13 +73,13 @@ class CurrentUser extends Component {
           username: username,
           first_name: first_name,
           last_name: last_name,
-          email: email
+          email: email,
         },
         { headers: { Authorization: `Bearer ${localStorage.token}` } }
       )
       .then((response) => this.toggleHidden())
       .catch((error) => {
-        console.log('user update error', error);
+        console.log("user update error", error);
       });
     event.preventDefault();
   }
@@ -96,7 +96,7 @@ class CurrentUser extends Component {
         <h1>User ID:{this.state.id}</h1>
         
         <div>
-          {this.state.isHidden ? 
+          {this.state.isHidden ? (
             <Button onClick={this.toggleHidden.bind(this)}>
               Close
             </Button> :
@@ -144,9 +144,7 @@ class CurrentUser extends Component {
                   />
                 </Form.Group>
                 <div className="text-center">
-                  <Button type="submit">
-                    Submit
-                  </Button>
+                  <Button type="submit">Submit</Button>
                 </div>
               </Form>
               <br />

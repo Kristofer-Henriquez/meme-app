@@ -41,19 +41,6 @@ import MemesNew from "./Components/MemesNew";
 
 // Roughcut V2v
 export default class App extends Component {
-<<<<<<< HEAD
-  // constructor() {
-  // console.log(ReportsShow);
-  // super();
-
-  // this.state = {
-  //   user: {},
-  // };
-
-  // }
-
-  componentDidMount() {}
-=======
   constructor( props ) {
   //   console.log(ReportsShow);
     super( props );
@@ -65,7 +52,6 @@ export default class App extends Component {
 
   // }
   }
->>>>>>> cf3e9da512f807a461b5ee8c891a4857ee6999e5
 
 
 

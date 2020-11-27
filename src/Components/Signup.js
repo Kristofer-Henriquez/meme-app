@@ -1,17 +1,18 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import Form from 'react-bootstrap/Form';
+import React, { Component } from "react";
+import axios from "axios";
+import Form from "react-bootstrap/Form";
 
 class Signup extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      first_name: '',
-      last_name: '',
-      email: '',
-      password: '',
-      password_confirmation: '',
+      first_name: "",
+      last_name: "",
+      username: "",
+      email: "",
+      password: "",
+      password_confirmation: "",
       active: true,
       errors: [],
     };
@@ -35,6 +36,7 @@ class Signup extends Component {
       first_name,
       last_name,
       email,
+      username,
       // active,
       password,
       password_confirmation,
@@ -42,21 +44,22 @@ class Signup extends Component {
 
     axios
       .post(
-        '/api/users',
+        "/api/users",
         {
           first_name: first_name,
           last_name: last_name,
+          username: username,
           email: email,
           active: true,
           password: password,
           password_confirmation: password_confirmation,
         },
-        {headers: { Authorization: `Bearer ${localStorage.token}` }}
+        { headers: { Authorization: `Bearer ${localStorage.token}` } }
       )
 
       .then((response) => {
-        if (response.data.message === 'User created successfully') {
-          this.props.history.push('/login');
+        if (response.data.message === "User created successfully") {
+          this.props.history.push("/login");
         }
       })
       .catch((error) => {
@@ -94,6 +97,16 @@ class Signup extends Component {
           </Form.Group>
           <Form.Group>
             <Form.Control
+              type="text"
+              name="username"
+              placeholder="Username"
+              value={this.state.username}
+              onChange={this.handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
               type="email"
               name="email"
               placeholder="Email"
@@ -125,16 +138,14 @@ class Signup extends Component {
           <div>
             {this.state.errors.map((error, index) => {
               return (
-                <span key={index} style={{ color: 'red' }}>
-                  {error},{' '}
+                <span key={index} style={{ color: "red" }}>
+                  {error},{" "}
                 </span>
               );
             })}
           </div>
           <div>
-            <button type="submit">
-              Signup
-            </button>
+            <button type="submit">Signup</button>
           </div>
         </Form>
       </div>

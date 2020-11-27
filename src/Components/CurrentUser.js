@@ -1,19 +1,18 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import OrganizationUser from './OrganizationUser';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
-
+import React, { Component } from "react";
+import axios from "axios";
+import OrganizationUser from "./OrganizationUser";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 class CurrentUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      first_name: '',
-      last_name: '',
-      email: '',
+      first_name: "",
+      last_name: "",
+      email: "",
       isHidden: true,
-      organization_users: []
+      organization_users: [],
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -22,8 +21,9 @@ class CurrentUser extends Component {
 
   componentDidMount() {
     axios
-      .get('/api/sessions' + localStorage.user_id, 
-        {headers: { Authorization: `Bearer ${localStorage.token}` }})
+      .get("/api/sessions" + localStorage.user_id, {
+        headers: { Authorization: `Bearer ${localStorage.token}` },
+      })
       .then((response) => {
         this.setState({
           first_name: response.data.first_name,
@@ -38,12 +38,12 @@ class CurrentUser extends Component {
   }
 
   updateOrganizationUsers = (newOrganizationUser) => {
-		const organization_users = this.state.organization_users;
-		organization_users.push(newOrganizationUser);
-		this.setState({
-			organization_users: organization_users
-		});
-	};
+    const organization_users = this.state.organization_users;
+    organization_users.push(newOrganizationUser);
+    this.setState({
+      organization_users: organization_users,
+    });
+  };
 
   toggleHidden() {
     this.setState({
@@ -62,17 +62,17 @@ class CurrentUser extends Component {
     const { first_name, last_name, email } = this.state;
     axios
       .patch(
-        '/api/users/' + localStorage.user_id,
+        "/api/users/" + localStorage.user_id,
         {
           first_name: first_name,
           last_name: last_name,
-          email: email
+          email: email,
         },
         { headers: { Authorization: `Bearer ${localStorage.token}` } }
       )
       .then((response) => this.toggleHidden())
       .catch((error) => {
-        console.log('user update error', error);
+        console.log("user update error", error);
       });
     event.preventDefault();
   }
@@ -93,16 +93,13 @@ class CurrentUser extends Component {
           })}
         </div>
         <div>
-          {this.state.isHidden ? 
+          {this.state.isHidden ? (
             <Button onClick={this.toggleHidden.bind(this)}>
               Update Account Info
-            </Button> :
-            <Button
-              onClick={this.toggleHidden.bind(this)}
-            >
-              Close
             </Button>
-          }
+          ) : (
+            <Button onClick={this.toggleHidden.bind(this)}>Close</Button>
+          )}
           <br />
           <br />
           {!this.state.isHidden ? (
@@ -139,10 +136,19 @@ class CurrentUser extends Component {
                     required
                   />
                 </Form.Group>
+                <Form.Group>
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    value={this.state.username}
+                    name="username"
+                    placeholder={this.state.username}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </Form.Group>
                 <div className="text-center">
-                  <Button type="submit">
-                    Submit
-                  </Button>
+                  <Button type="submit">Submit</Button>
                 </div>
               </Form>
               <br />
@@ -152,15 +158,8 @@ class CurrentUser extends Component {
                 Delete Account
               </button> */}
             </div>
-            
           ) : null}
         </div>
-
-        <br />
-        <h3>Add Your Organizations</h3>
-        <OrganizationUser 
-          updateOrganizationUsers={this.updateOrganizationUsers} 
-        />
       </div>
     );
   }

@@ -23,12 +23,12 @@ class CurrentUser extends Component {
 
   componentDidMount() {
     axios
-      .get("/api/users/1" + localStorage.user_id, {
+      .get("/api/users/" + localStorage.user_id, {
         headers: { Authorization: `Bearer ${localStorage.token}` },
       })
       .then((response) => {
         this.setState({
-          id: response.data.id,
+          // id: response.data.id,
           first_name: response.data.first_name,
           last_name: response.data.last_name,
           email: response.data.email,
@@ -40,14 +40,6 @@ class CurrentUser extends Component {
         console.log(error);
       });
   }
-
-  // updateOrganizationUsers = (newOrganizationUser) => {
-  // 	const organization_users = this.state.organization_users;
-  // 	organization_users.push(newOrganizationUser);
-  // 	this.setState({
-  // 		organization_users: organization_users
-  // 	});
-  // };
 
   toggleHidden() {
     this.setState({
@@ -66,9 +58,9 @@ class CurrentUser extends Component {
     const { first_name, last_name, email, username, id } = this.state;
     axios
       .patch(
-        "/api/users/1" + localStorage.user_id,
+        "/api/users/" + localStorage.user_id,
         {
-          id: id,
+          // id: id,
           username: username,
           first_name: first_name,
           last_name: last_name,
@@ -94,7 +86,7 @@ class CurrentUser extends Component {
         </h1>
         <h1>Username: {this.state.username}</h1>
         <h1>Email: {this.state.email}</h1>
-        <h1>User ID:{this.state.id}</h1>
+        {/* <h1>User ID:{this.state.id}</h1> */}
 
         <div>
           {this.state.isHidden ? (
@@ -167,10 +159,6 @@ class CurrentUser extends Component {
         </div>
 
         <br />
-        {/* <h3>Add Your Organizations</h3>
-        <OrganizationUser 
-          updateOrganizationUsers={this.updateOrganizationUsers} 
-        /> */}
       </div>
     );
   }

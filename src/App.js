@@ -11,19 +11,17 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
+import Header from "./Components/Header";
 
 import Dashboard from "./Components/Dashboard";
 
 import Navigation from "./Components/Navigation";
 
-import Header from "./Components/Header";
 // import MemeGenerator from "./Components/MemeGenerator";
 import MemeCreate from "./Components/MemeCreate";
-import Footer from "./Components/Footer";
 
-// import Organizations from './Components/Organizations';
-import MemesShow from "./Components/MemesShow";
-import MemesNew from "./Components/MemesNew";
+// import MemesShow from "./Components/MemesShow";
+// import MemesNew from "./Components/MemesNew";
 
 // class App extends Component {
 //    render() {
@@ -76,7 +74,7 @@ export default class App extends Component {
           </div>
         )}
 
-        <Footer />
+        {/* <Footer /> */}
       </div>
     );
   }

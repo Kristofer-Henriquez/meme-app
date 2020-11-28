@@ -55,7 +55,7 @@ class CurrentUser extends Component {
   }
 
   handleSubmit(event) {
-    const { first_name, last_name, email, username, id } = this.state;
+    const { first_name, last_name, email, username } = this.state;
     axios
       .patch(
         "/api/users/" + localStorage.user_id,
@@ -91,12 +91,14 @@ class CurrentUser extends Component {
         <div>
           {this.state.isHidden ? (
             <Button onClick={this.toggleHidden.bind(this)}>
-              Update Account Info
+              Save Account Info
             </Button>
           ) : (
-            <Button onClick={this.toggleHidden.bind(this)}>Close</Button>
+            <Button onClick={this.toggleHidden.bind(this)}>
+              Update Account
+            </Button>
           )}
-
+          ;
           <br />
           <br />
           {this.state.isHidden ? (

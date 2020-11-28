@@ -1,0 +1,6 @@
+2020-11-27 12:41:01.168 CST [15377] FATAL:  database files are incompatible with server
+2020-11-27 12:41:01.168 CST [15377] DETAIL:  The data directory was initialized by PostgreSQL version 12, which is not compatible with this version 13.1.
+2020-11-27 12:41:12.683 CST [15455] FATAL:  database files are incompatible with server
+2020-11-27 12:41:12.683 CST [15455] DETAIL:  The data directory was initialized by PostgreSQL version 12, which is not compatible with this version 13.1.
+2020-11-27 12:41:31.161 CST [15536] FATAL:  database files are incompatible with server
+2020-11-27 12:41:31.161 CST [15536] DETAIL:  The data directory was initialized by PostgreSQL version 12, which is not compatible with this version 13.1.

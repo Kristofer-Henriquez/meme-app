@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CurrentUser from './CurrentUser';
 
+
 class Dashboard extends Component {
   constructor() {
     super();

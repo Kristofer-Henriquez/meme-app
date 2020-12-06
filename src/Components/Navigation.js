@@ -10,11 +10,16 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: true,
     };
 
+    this.showHide = this.showHide.bind(this);
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
     this.handleMinimize = this.handleMinimize.bind(this);
   }
+
+
+
 
   handleMinimize() {
     this.props.history.push("/");
@@ -25,6 +30,8 @@ class Navigation extends Component {
     localStorage.removeItem("user_id");
     this.props.history.push("/login");
   }
+
+
 
 
 
@@ -46,6 +53,8 @@ class Navigation extends Component {
                   Logout
                 </Link>
               </li>
+              
+              
             </div>
           ) : (
             <div>
@@ -59,12 +68,21 @@ class Navigation extends Component {
           )}
           
         </ul>
-        <button onClick={this.handleMinimize}>Minimize Dashboard</button>
-        <hr></hr>
+      
       </nav>
+      
     );
+    
   }
+
+  showHide() {
+    const { show } = this.state;
+    this.setState({ show: !show });
+  }
+  
+  
 }
+
 
 
 export default withRouter(Navigation);

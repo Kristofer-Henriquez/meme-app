@@ -1,10 +1,14 @@
 import React, { Component } from "react";
+// import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 // import OrganizationUser from './OrganizationUser';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
-class CurrentUser extends Component {
+
+
+
+export class CurrentUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -12,7 +16,9 @@ class CurrentUser extends Component {
       last_name: "",
       username: "",
       email: "",
+      password: "",
       user_id: "",
+      // show: false,
       // user_id: '',
       // isHidden: true,
       current_user: {},
@@ -20,6 +26,11 @@ class CurrentUser extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleMinimize = this.handleMinimize.bind(this);
+  }
+
+  handleMinimize() {
+    this.props.history.push("/");
   }
 
   componentDidMount() {
@@ -43,6 +54,16 @@ class CurrentUser extends Component {
       });
   }
 
+  
+
+  handleClick() {
+    console.log("I was clicked")
+  }
+
+  doStuff(){
+    this.stuff = "Bander TEST";
+  }
+
   toggleHidden() {
     this.setState({
       isHidden: !this.state.isHidden,
@@ -57,6 +78,37 @@ class CurrentUser extends Component {
   }
 
   handleSubmit(event) {
+    const { email, password } = this.state;
+
+    axios
+      .post(
+        "/api/sessions",
+        {
+          email: email,
+          password: password,
+        }
+        // { withCredentials: true }
+      )
+
+      .then((response) => {
+        if (response.data.jwt) {
+          localStorage.setItem("token", response.data.jwt);
+          localStorage.setItem("user_id", response.data.user_id);
+          this.props.history.push("/dashboard");
+          // this.props.history.push('/meme')
+        }
+      })
+      .catch((error) => {
+        // this.setState({
+        //  errorMessage: error.response.data.message,
+        // });
+        console.log(error.response.status);
+        console.log(error.response);
+      });
+    event.preventDefault();
+  }
+
+  handleEdit(event) {
     const { first_name, last_name, email, username } = this.state;
     axios
       .patch(
@@ -79,16 +131,21 @@ class CurrentUser extends Component {
 
   render() {
     return (
+
       <div>
-        <h1>Welcome to your Dashboard, {this.state.first_name}!</h1>
-        <h1>Account Info:</h1>
-        <br />
-        <h1>User ID: {this.state.user_id}</h1>
-        <h1>
-          Name: {this.state.first_name} {this.state.last_name}
-        </h1>
-        <h1>Username: {this.state.username}</h1>
-        <h1>Email: {this.state.email}</h1>
+          
+          
+       
+          <h1>Welcome to your Dashboard, {this.state.first_name}!</h1>
+          <h1>Account Info:</h1>
+          <br />
+          <h1>User ID: {this.state.user_id}</h1>
+          <h1>
+            Name: {this.state.first_name} {this.state.last_name}
+          </h1>
+          <h1>Username: {this.state.username}</h1>
+          <h1>Email: {this.state.email}</h1>
+      
         
 
         <div>
@@ -169,4 +226,6 @@ class CurrentUser extends Component {
   }
 }
 
-export default CurrentUser;
+let foo = new CurrentUser();
+foo.doStuff();
+

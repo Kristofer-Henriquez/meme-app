@@ -12,6 +12,7 @@ class CurrentUser extends Component {
       last_name: "",
       username: "",
       email: "",
+      user_id: "",
       // user_id: '',
       // isHidden: true,
       current_user: {},
@@ -33,6 +34,7 @@ class CurrentUser extends Component {
           last_name: response.data.last_name,
           email: response.data.email,
           username: response.data.username,
+          user_id: response.data.id,
           current_user: response.data.current_user,
         });
       })
@@ -81,24 +83,25 @@ class CurrentUser extends Component {
         <h1>Welcome to your Dashboard, {this.state.first_name}!</h1>
         <h1>Account Info:</h1>
         <br />
+        <h1>User ID: {this.state.user_id}</h1>
         <h1>
           Name: {this.state.first_name} {this.state.last_name}
         </h1>
         <h1>Username: {this.state.username}</h1>
         <h1>Email: {this.state.email}</h1>
-        {/* <h1>User ID:{this.state.id}</h1> */}
+        
 
         <div>
           {this.state.isHidden ? (
             <Button onClick={this.toggleHidden.bind(this)}>
-              Save Account Info
+              Close
             </Button>
           ) : (
             <Button onClick={this.toggleHidden.bind(this)}>
               Update Account
             </Button>
           )}
-          ;
+          
           <br />
           <br />
           {this.state.isHidden ? (

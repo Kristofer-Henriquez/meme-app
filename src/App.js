@@ -8,10 +8,12 @@ import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 // import ReactDOM from "react-dom";
 // import { Router, Route, Link, browserHistory, IndexRoute } from "react-router";
 // import Home from "./Home";
+import axios from "axios";
 
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Header from "./Components/Header";
+import Footer from "./Components/Footer";
 
 import Dashboard from "./Components/Dashboard";
 
@@ -19,6 +21,7 @@ import Navigation from "./Components/Navigation";
 
 // import MemeGenerator from "./Components/MemeGenerator";
 import MemeCreate from "./Components/MemeCreate";
+import MemeData from "./Components/MemeData";
 
 // import MemesShow from "./Components/MemesShow";
 // import MemesNew from "./Components/MemesNew";
@@ -32,8 +35,13 @@ export default class App extends Component {
     //   console.log(ReportsShow);
     super(props);
 
-    this.state = { show: false };
+    this.state = {
+      show: false,
+      show2: false,
+    };
+
     this.showHide = this.showHide.bind(this);
+    this.showHide2 = this.showHide2.bind(this);
     //     user: {},
     //   };
 
@@ -74,7 +82,27 @@ export default class App extends Component {
           </div>
         )}
 
-        {/* <Footer /> */}
+        <hr></hr>
+
+        <button
+          style={{
+            color: "black",
+            backgroundColor: "lightgrey",
+            marginTop: 10,
+            padding: 10,
+            borderColor: "black",
+          }}
+          onClick={this.showHide2}
+          className="button-primary btn"
+        >
+          {this.changeName2()}
+        </button>
+        {this.state.show2 && (
+          <div>
+            <MemeData />
+          </div>
+        )}
+        <Footer />
       </div>
     );
   }
@@ -83,9 +111,18 @@ export default class App extends Component {
     text += this.state.show === true ? "hide" : "show";
     return text;
   }
+  changeName2() {
+    let text = "User Created Memes ";
+    text += this.state.show2 === true ? "hide" : "show";
+    return text;
+  }
   showHide() {
     const { show } = this.state;
     this.setState({ show: !show });
+  }
+  showHide2() {
+    const { show2 } = this.state;
+    this.setState({ show2: !show2 });
   }
 }
 // Roughcut V2^

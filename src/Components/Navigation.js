@@ -1,14 +1,23 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
+// import Form from "react-bootstrap/Form";
+// import Button from "react-bootstrap/Button";
 // import Nav from 'react-bootstrap/Nav';
 // import Navbar from 'react-bootstrap/Navbar';
+
 
 class Navigation extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+    };
 
     this.handleLogoutClick = this.handleLogoutClick.bind(this);
+    this.handleMinimize = this.handleMinimize.bind(this);
+  }
+
+  handleMinimize() {
+    this.props.history.push("/");
   }
 
   handleLogoutClick() {
@@ -16,6 +25,9 @@ class Navigation extends Component {
     localStorage.removeItem("user_id");
     this.props.history.push("/login");
   }
+
+
+
 
   render() {
     return (
@@ -27,7 +39,7 @@ class Navigation extends Component {
                 <Link to="/dashboard">My Account</Link>
               </li>
               <li className="active">
-                <Link to="/completed">Completed Memes</Link>
+                <Link to="/completed">Recent Completed Meme</Link>
               </li>
               <li>
                 <Link onClick={this.handleLogoutClick} to="/logout">
@@ -45,10 +57,14 @@ class Navigation extends Component {
               </li>
             </div>
           )}
+          
         </ul>
+        <button onClick={this.handleMinimize}>Minimize Dashboard</button>
+        <hr></hr>
       </nav>
     );
   }
 }
+
 
 export default withRouter(Navigation);

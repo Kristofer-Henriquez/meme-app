@@ -1,8 +1,5 @@
-import React, { Component } from 'react';
-import {CurrentUser} from './CurrentUser';
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-
+import React, { Component } from "react";
+import { CurrentUser } from "./CurrentUser";
 
 class Dashboard extends Component {
   constructor() {
@@ -13,8 +10,6 @@ class Dashboard extends Component {
       username: "",
       email: "",
       user_id: "",
-      // user_id: '',
-      // isHidden: true,
       current_user: {},
     };
     this.handleMinimize = this.handleMinimize.bind(this);
@@ -30,9 +25,6 @@ class Dashboard extends Component {
 
   render() {
     return (
-
-      
-      
       <div className="component">
         <button onClick={this.handleMinimize}>Minimize Dashboard</button>
 

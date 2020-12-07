@@ -1,20 +1,15 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React, { Component} from "react";
-// import { Meme } from "./Meme";
-import axios from 'axios';
-// import CurrentUser from './CurrentUser';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React, { Component } from "react";
+import axios from "axios";
 import { Meme } from "./Meme";
-// import MemeCreate from "./MemeCreate";
 import MapTemplates from "./MapTemplates";
-
-
 
 class FullStack extends Component {
   constructor() {
     super();
     this.state = {
       templates: [],
-      template: (null),
+      template: null,
       topText: "",
       bottomText: "",
       Meme: <Meme />,
@@ -23,13 +18,10 @@ class FullStack extends Component {
       username: "",
       email: "",
       user_id: "",
-      // user_id: '',
-      // isHidden: true,
+
       current_user: {},
-      
     };
     this.handleMinimize = this.handleMinimize.bind(this);
-    
   }
 
   handleMinimize() {
@@ -66,13 +58,12 @@ class FullStack extends Component {
       //     </div>
       //   <hr></hr>
 
-        
       // </div>
 
       <div style={{ textAlign: "center" }}>
         {this.state.template && (
           <form
-            onSubmit={async e => {
+            onSubmit={async (e) => {
               e.preventDefault();
               // add logic to create meme from api
               const params = {
@@ -80,7 +71,7 @@ class FullStack extends Component {
                 text0: this.state.topText,
                 text1: this.state.bottomText,
                 username: "xzk03017",
-                password: "xzk03017@cndps.com"
+                password: "xzk03017@cndps.com",
               };
               const response = await fetch(
                 `https://api.imgflip.com/caption_image${this.state.objectToQueryParam(
@@ -95,29 +86,25 @@ class FullStack extends Component {
             <input
               placeholder="top text"
               value={this.state.topText}
-              onChange={e => this.state.topText(e.target.value)}
+              onChange={(e) => this.state.topText(e.target.value)}
             />
             <input
               placeholder="bottom text"
               value={this.state.bottomText}
-              onChange={e => this.state.bottomText(e.target.value)}
+              onChange={(e) => this.state.bottomText(e.target.value)}
             />
             <button type="submit">create meme</button>
           </form>
         )}
         {!this.state.template && (
           <>
-
             {/* <h1>Pick a template: {this.state.email}</h1> */}
             <h1>Pick a template: </h1>
 
             <MapTemplates />
-         
           </>
         )}
       </div>
-
-
     );
   }
   changeName() {
@@ -155,6 +142,5 @@ class FullStack extends Component {
 //   return <p>Hii</p>;
 // }
 // export default App
-
 
 export default FullStack;

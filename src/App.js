@@ -1,39 +1,18 @@
 // import logo from "./logo.svg";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import React from 'react';
 import React, { Component } from "react";
-// import React, { useState, useEffect } from "react";
+
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-// import ReactDOM from "react-dom";
-// import { Router, Route, Link, browserHistory, IndexRoute } from "react-router";
-// import Home from "./Home";
 import axios from "axios";
-
-
-
 import Signup from "./Components/Signup";
 import Login from "./Components/Login";
 import Header from "./Components/Header";
-import Footer from "./Components/Footer";
-
 import Dashboard from "./Components/Dashboard";
-// import CurrentUser from './Components/CurrentUser';
-
 import Navigation from "./Components/Navigation";
-
-// import MemeGenerator from "./Components/MemeGenerator";
 import FullStack from "./Components/FullStack";
-// import MemeCreate from "./Components/MemeCreate";
 import MemeData from "./Components/MemeData";
-// import CurrentUser from "./Components/CurrentUser";
 
-// import MemesShow from "./Components/MemesShow";
-// import MemesNew from "./Components/MemesNew";
-
-// class App extends Component {
-//    render() {
-// Roughcut V2v
 export default class App extends Component {
   constructor(props) {
     //   console.log(ReportsShow);
@@ -47,18 +26,12 @@ export default class App extends Component {
       username: "",
       email: "",
       user_id: "",
-      // user_id: '',
-      // isHidden: true,
+
       current_user: {},
     };
 
     this.showHide = this.showHide.bind(this);
     this.showHide2 = this.showHide2.bind(this);
-  
-    //     user: {},
-    //   };
-
-    // }
   }
 
   componentDidMount() {
@@ -68,7 +41,6 @@ export default class App extends Component {
       })
       .then((response) => {
         this.setState({
-          // id: response.data.id,
           first_name: response.data.first_name,
           last_name: response.data.last_name,
           email: response.data.email,
@@ -81,17 +53,6 @@ export default class App extends Component {
         console.log(error);
       });
   }
-
-  // setUserProfile = () => {
-  //   const token = localStorage.usertoken
-  //   const decoded = localStorage.token
-  //   this.setState({
-  //     username: decoded.username,
-  //     first_name: decoded.first_name,
-  //     last_name: decoded.last_name,
-  //     email: decoded.email
-  //   })
-  // }
 
   render() {
     return (
@@ -150,8 +111,6 @@ export default class App extends Component {
             <MemeData />
           </div>
         )}
-     
-        <Footer />
       </div>
     );
   }
@@ -174,19 +133,3 @@ export default class App extends Component {
     this.setState({ show2: !show2 });
   }
 }
-// Roughcut V2^
-
-// function App() {
-//   return (
-//     <div>
-//       <Header />
-//       <Login />
-//     </div>
-//   )
-// }
-// export default App;
-
-// function App() {
-//   return <p>Hii</p>;
-// }
-// export default App

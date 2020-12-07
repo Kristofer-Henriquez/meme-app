@@ -3,16 +3,12 @@
 
 // import Login from './Components/Login';
 
-
 import React, { Component } from "react";
 // import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 // import OrganizationUser from './OrganizationUser';
 // import Form from "react-bootstrap/Form";
 // import Button from "react-bootstrap/Button";
-
-
-
 
 export class User extends Component {
   constructor(props) {
@@ -21,9 +17,6 @@ export class User extends Component {
       email: "",
       password: "",
       user_id: "",
-      // show: false,
-      // user_id: '',
-      // isHidden: true,
       current_user: {},
     };
 
@@ -43,7 +36,6 @@ export class User extends Component {
       })
       .then((response) => {
         this.setState({
-          // id: response.data.id,
           first_name: response.data.first_name,
           last_name: response.data.last_name,
           email: response.data.email,
@@ -57,13 +49,11 @@ export class User extends Component {
       });
   }
 
-  
-
   handleClick() {
-    console.log("I was clicked")
+    console.log("I was clicked");
   }
 
-  doStuff(){
+  doStuff() {
     this.stuff = "Bander TEST";
   }
 
@@ -84,27 +74,19 @@ export class User extends Component {
     const { email, password } = this.state;
 
     axios
-      .post(
-        "/api/sessions",
-        {
-          email: email,
-          password: password,
-        }
-        // { withCredentials: true }
-      )
+      .post("/api/sessions", {
+        email: email,
+        password: password,
+      })
 
       .then((response) => {
         if (response.data.jwt) {
           localStorage.setItem("token", response.data.jwt);
           localStorage.setItem("user_id", response.data.user_id);
           this.props.history.push("/dashboard");
-          // this.props.history.push('/meme')
         }
       })
       .catch((error) => {
-        // this.setState({
-        //  errorMessage: error.response.data.message,
-        // });
         console.log(error.response.status);
         console.log(error.response);
       });
@@ -117,7 +99,6 @@ export class User extends Component {
       .patch(
         "/api/users/" + localStorage.user_id,
         {
-          // id: id,
           username: username,
 
           first_name: first_name,
@@ -135,16 +116,8 @@ export class User extends Component {
 
   render() {
     return (
-
       <div>
-          
-  
-
         <h1>{this.state.user_id}</h1>
-      
-        
-
-
       </div>
     );
   }

@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-// import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
-// import OrganizationUser from './OrganizationUser';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
-
-
 
 export class CurrentUser extends Component {
   constructor(props) {
@@ -18,9 +13,6 @@ export class CurrentUser extends Component {
       email: "",
       password: "",
       user_id: "",
-      // show: false,
-      // user_id: '',
-      // isHidden: true,
       current_user: {},
     };
 
@@ -40,12 +32,11 @@ export class CurrentUser extends Component {
       })
       .then((response) => {
         this.setState({
-          // id: response.data.id,
           first_name: response.data.first_name,
           last_name: response.data.last_name,
           email: response.data.email,
           username: response.data.username,
-          user_id: response.data.id,
+          // user_id: response.data.id,
           current_user: response.data.current_user,
         });
       })
@@ -54,13 +45,11 @@ export class CurrentUser extends Component {
       });
   }
 
-  
-
   handleClick() {
-    console.log("I was clicked")
+    console.log("I was clicked");
   }
 
-  doStuff(){
+  doStuff() {
     this.stuff = "Bander TEST";
   }
 
@@ -114,7 +103,6 @@ export class CurrentUser extends Component {
       .patch(
         "/api/users/" + localStorage.user_id,
         {
-          // id: id,
           username: username,
           first_name: first_name,
           last_name: last_name,
@@ -131,34 +119,25 @@ export class CurrentUser extends Component {
 
   render() {
     return (
-
       <div>
-          
-          
-       
-          <h1>Welcome to your Dashboard, {this.state.first_name}!</h1>
-          <h1>Account Info:</h1>
-          <br />
-          <h1>User ID: {this.state.user_id}</h1>
-          <h1>
-            Name: {this.state.first_name} {this.state.last_name}
-          </h1>
-          <h1>Username: {this.state.username}</h1>
-          <h1>Email: {this.state.email}</h1>
-      
-        
+        <h1>Welcome to your Dashboard, {this.state.first_name}!</h1>
+        <h1>Account Info:</h1>
+        <br />
+        <h1>
+          Name: {this.state.first_name} {this.state.last_name}
+        </h1>
+        <h1>Username: {this.state.username}</h1>
+        <h1>Email: {this.state.email}</h1>
 
         <div>
           {this.state.isHidden ? (
-            <Button onClick={this.toggleHidden.bind(this)}>
-              Close
-            </Button>
+            <Button onClick={this.toggleHidden.bind(this)}>Close</Button>
           ) : (
             <Button onClick={this.toggleHidden.bind(this)}>
               Update Account
             </Button>
           )}
-          
+
           <br />
           <br />
           {this.state.isHidden ? (
@@ -228,4 +207,3 @@ export class CurrentUser extends Component {
 
 let foo = new CurrentUser();
 foo.doStuff();
-

@@ -1,10 +1,5 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-// import Form from "react-bootstrap/Form";
-// import Button from "react-bootstrap/Button";
-// import Nav from 'react-bootstrap/Nav';
-// import Navbar from 'react-bootstrap/Navbar';
-
 
 class Navigation extends Component {
   constructor(props) {
@@ -18,9 +13,6 @@ class Navigation extends Component {
     this.handleMinimize = this.handleMinimize.bind(this);
   }
 
-
-
-
   handleMinimize() {
     this.props.history.push("/");
   }
@@ -30,11 +22,6 @@ class Navigation extends Component {
     localStorage.removeItem("user_id");
     this.props.history.push("/login");
   }
-
-
-
-
-
 
   render() {
     return (
@@ -53,8 +40,6 @@ class Navigation extends Component {
                   Logout
                 </Link>
               </li>
-              
-              
             </div>
           ) : (
             <div>
@@ -66,23 +51,15 @@ class Navigation extends Component {
               </li>
             </div>
           )}
-          
         </ul>
-      
       </nav>
-      
     );
-    
   }
 
   showHide() {
     const { show } = this.state;
     this.setState({ show: !show });
   }
-  
-  
 }
-
-
 
 export default withRouter(Navigation);

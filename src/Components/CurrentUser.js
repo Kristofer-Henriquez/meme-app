@@ -11,7 +11,7 @@ export class CurrentUser extends Component {
       last_name: "",
       username: "",
       email: "",
-      password: "",
+      // password: "",
       user_id: "",
       current_user: {},
     };
@@ -205,5 +205,7 @@ export class CurrentUser extends Component {
   }
 }
 
-let foo = new CurrentUser();
-foo.doStuff();
+// let foo = new CurrentUser();
+// foo.doStuff();
+
+export default CurrentUser;

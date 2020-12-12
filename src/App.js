@@ -2,6 +2,7 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { Component } from "react";
+import Navbar from "react-bootstrap/Navbar";
 
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import axios from "axios";
@@ -59,14 +60,14 @@ export default class App extends Component {
       <div className="app">
         <BrowserRouter>
           <Navigation />
-          <Switch>
+          {/* <Switch>
             <Route exact path="/">
               <Redirect to="/" />
             </Route>
             <Route path={"/signup"} component={Signup} />
             <Route path={"/login"} component={Login} />
             <Route path={"/dashboard"} component={Dashboard} />
-          </Switch>
+          </Switch> */}
         </BrowserRouter>
         <Header />
         <hr></hr>
